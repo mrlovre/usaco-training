@@ -13,19 +13,22 @@ if __name__ == '__main__':
         print("Folder already exists. Skipping.")
         exit()
 
-    source_filepath = os.path.join(args.name, args.name + ".py")
-    with open(source_filepath, "w") as source_file:
-        print("\"\"\"", file=source_file)
-        print("ID: mrlovre1", file=source_file)
-        print("LANG: PYTHON3", file=source_file)
-        print(f"PROB: {args.name}", file=source_file)
-        print("\"\"\"", file=source_file)
-        print(f"Created {source_filepath} with header.")
+    source_file, in_file, out_file = [args.name + ext for ext in [".py", ".in", ".out"]]
+    source_path, in_path, out_path = [os.path.join(args.name, file) for file in [source_file, in_file, out_file]]
 
-    in_filepath = os.path.join(args.name, args.name + ".in")
-    with open(in_filepath, "w") as in_file:
-        print(f"Created empty {in_filepath}.")
+    with open(source_path, "w") as source:
+        print("\"\"\"", file=source)
+        print("ID: mrlovre1", file=source)
+        print("LANG: PYTHON3", file=source)
+        print(f"PROB: {args.name}", file=source)
+        print("\"\"\"", file=source)
+        print(file=source)
+        print(f"with open(\"{in_path}\", \"r\") as fin, open(\"{out_path}\", \"w\") as fout:", file=source)
+        print("    pass", file=source)
+        print(f"Created {source_path} with header.")
 
-    out_filepath = os.path.join(args.name, args.name + ".out")
-    with open(out_filepath, "w") as out_file:
-        print(f"Created empty {out_filepath}.")
+    with open(in_path, "w"):
+        print(f"Created empty {in_path}.")
+
+    with open(out_path, "w"):
+        print(f"Created empty {out_path}.")
