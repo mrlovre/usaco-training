@@ -23,7 +23,7 @@ if __name__ == '__main__':
         print(f"PROB: {args.name}", file=source)
         print("\"\"\"", file=source)
         print(file=source)
-        print(f"with open(\"{in_path}\", \"r\") as fin, open(\"{out_path}\", \"w\") as fout:", file=source)
+        print(f"with open(\"{in_file}\", \"r\") as fin, open(\"{out_file}\", \"w\") as fout:", file=source)
         print("    pass", file=source)
         print(f"Created {source_path} with header.")
 
